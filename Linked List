@@ -1,0 +1,234 @@
+class LL{
+    Node start;
+    class Node{ 
+        int data;
+        Node next;
+        Node(int d){
+            data=d;
+            next=null;
+        }
+    }
+    public void insertBeg(int v){
+        Node newNode=new Node(v);
+        newNode.next=start;
+        start=newNode;
+         }
+    public void insertEnd(int v){
+        Node newNode=new Node(v);
+        if(start==null){
+            start=newNode;
+            return;
+        }
+        Node tptr=start;
+        while(tptr.next!=null){
+            tptr=tptr.next;
+        }
+        tptr.next=newNode;
+
+    }
+    public int calc_of_node(){
+        int count=0;
+        Node tptr=start;
+        while(tptr!=null) {
+            tptr=tptr.next;
+            count++;
+        }
+        return count;
+    }
+    public void insertAtPos(int v,int pos){
+        int size=calc_of_node();
+        if(pos==1){
+            insertBeg(v); return;
+        }
+        if(pos<0 || pos>size){
+            System.out.println("Error You cannot insert at "+pos);
+            return;
+        }
+        Node newNode=new Node(v);
+        Node tptr=start;
+       for(int i=1;i<pos-1;i++) tptr=tptr.next;
+       
+       newNode.next=tptr.next;
+       tptr.next=newNode;
+    }
+    public void deleteBeg(){
+        if(start==null){
+            System.out.println("No Node to delete");
+            return;
+        }
+        if(start.next==null){
+            start=start.next;
+            System.out.println("List Empty Node deleted");
+            return;
+        }
+        start=start.next;
+    }
+     public void deleteEnd(){
+        if(start==null){
+            System.out.println("No Node to delete");
+            return;
+        }
+        if(start.next==null){
+            start=start.next;
+            System.out.println("List Empty Node deleted");
+            return;
+        }
+        Node tptr=start;
+        while(tptr.next.next!=null) tptr=tptr.next;
+        tptr.next=null;
+    }
+    
+     public void deleteAtPos(int pos){
+        int size=calc_of_node();
+        if(pos==1){
+            deleteBeg(); return;
+        }
+        if(pos<0 || pos>size){
+            System.out.println("Error You cannot delete at "+pos);
+            return;
+        }
+      
+        Node tptr=start;
+       for(int i=1;i<pos-1;i++) tptr=tptr.next;
+       
+     
+       tptr.next=tptr.next.next;
+    }
+   public int search(int se){
+        Node tptr=start;
+        int pos=0;
+        while(tptr!=null){
+            pos++;
+            if(tptr.data==se)
+            return pos;
+        tptr=tptr.next;
+            
+        }
+        return -1;
+    }
+//MTF Search
+public boolean search(int se){
+        if(start==null) return false;
+        if(start.data==se) return true;
+        Node prev=start;
+        Node curr=start.next;
+        
+        while(curr!=null){
+            if(curr.data==se){
+                prev.next=curr.next;
+                curr.next=start;
+                start=curr;
+                
+                
+                return true;
+            }
+            prev=curr;
+            curr=curr.next;
+        }
+        return false;
+    }
+
+public int max(){
+        Node tptr=start;
+        int max=start.data;
+        while(tptr!=null){
+            if(max<tptr.data)
+            max=tptr.data;
+            tptr=tptr.next;
+        }
+        return max;
+    }
+ public String isSorted(){
+        boolean des=true,asc=true;
+        Node tptr=start;
+        while(tptr.next!=null){
+            if(tptr.data<tptr.next.data)
+            des=false;
+            else if(tptr.data>tptr.next.data)
+            asc=false;
+            tptr=tptr.next;
+        }
+        if(asc) return "Sorted in Ascending";
+        else if(des) return "Sorted in Descending";
+        else return "Not sorted";
+    }
+
+ public int sum(){
+        int sum=0;
+        Node tptr=start;
+        while(tptr!=null){
+            sum+=tptr.data;
+            tptr=tptr.next;
+        }
+        return sum;
+    }
+public void removeDuplicates(){
+        Node tptr=start;
+        while(tptr.next!=null){
+            if(tptr.data==tptr.next.data)
+            tptr.next=tptr.next.next;
+            
+            else
+            tptr=tptr.next;
+        }
+    }
+
+public boolean hasLoopOrNot()
+    {
+        Node slow=start,fast=start;
+        
+        while(fast!=null&&fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        
+         if(slow.data==fast.data)
+            return true;
+          //  break;
+         
+           }
+        return false;
+    }
+public void display(){
+        Node tptr=start;
+        while(tptr!=null){
+            System.out.print(tptr.data+"->");
+            tptr=tptr.next;
+        }
+        
+    }
+
+}
+public class Main
+{
+	public static void main(String[] args) {
+		LL list1=new LL();
+//  		list1.insertBeg(10);
+// 	   list1.insertBeg(20);
+//	    list1.insertBeg(30);
+	list1.insertEnd(40);
+	 list1.insertEnd(50);
+	 list1.insertEnd(60);
+	 list1.insertEnd(70);
+ list1.deleteAtPos(3);
+	    list1.display();
+	    
+	}
+}
+*****************************************************************
+insertion 
+
+deletion
+
+count of the node
+
+Search-2 ways
+
+Max
+
+Is Sorted or not
+
+Sum of all node
+
+Remove duplicates in sorted list
+
+check loop?
