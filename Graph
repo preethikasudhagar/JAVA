@@ -1,0 +1,312 @@
+
+public class Main
+{
+    static int V=3;
+    static int arr[][]=new int[V][V];
+    public static void add(int i,int j){
+        arr[i][j]=1;
+        arr[j][i]=1;
+    }
+	public static void display()
+	{
+	    
+	    for(int i=0;i<V;i++){
+	        for(int j=0;j<V;j++){
+	            System.out.print(arr[i][j]+" ");
+	        }
+	        System.out.println();
+	    }
+	}
+	public static void main(String[] args) {
+	    add(0,1);
+	    add(0,1);
+	    add(1,2);
+	    display();
+	
+	    
+	}
+}
+
+10----30
+|
+|
+15----25
+
+
+public class Main
+{
+    static int V[]={10,15,25,30};
+    static int arr[][]=new int[4][4];
+    public static int getindex(int v)
+    {
+        for(int i=0;i<V.length;i++)
+        {
+            if(v==V[i])
+            return i;
+        }
+        return -1;
+    }
+    public static void add(int v1,int v2){
+        int i1=getindex(v1);
+        int j1=getindex(v2);
+       // System.out.print(i1+ " "+j1);
+        arr[i1][j1]=1;
+        arr[j1][i1]=1;
+    }
+	public static void display()
+	{
+	    System.out.print("  ");
+	    for(int i=0;i<4;i++)
+	    System.out.print(V[i]+"|");
+	    System.out.println();
+	    for(int i=0;i<4;i++){
+	        System.out.print(V[i]+" ");
+	        for(int j=0;j<4;j++){
+	            System.out.print(arr[i][j]+"  ");
+	        }
+	        System.out.println();
+	    }
+	}
+	public static void main(String[] args) {
+	    add(10,30);
+	    add(10,15);
+	    add(15,25);
+	    display();
+	
+	    
+	}
+}
+	A
+B	C	D
+E
+
+A--B--E
+|
+D  A-C
+
+
+
+public class Main
+{
+    static char V[]={'A','B','C','D','E'};
+    static int arr[][]=new int[5][5];
+    public static int getindex(char v)
+    {
+        for(int i=0;i<V.length;i++)
+        {
+            if(v==V[i])
+            return i;
+        }
+        return -1;
+    }
+    public static void add(char v1,char v2){
+        int i1=getindex(v1);
+        int j1=getindex(v2);
+      
+        arr[i1][j1]=1;
+        arr[j1][i1]=1;
+    }
+	public static void display()
+	{
+	    System.out.print("  ");
+	    for(int i=0;i<V.length;i++)
+	    System.out.print(V[i]+"| ");
+	    System.out.println();
+	    for(int i=0;i<V.length;i++){
+	        System.out.print(V[i]+" ");
+	        for(int j=0;j<V.length;j++){
+	            System.out.print(arr[i][j]+"  ");
+	        }
+	        System.out.println();
+	    }
+	}
+	public static void main(String[] args) {
+	    add('A','B');
+	    add('A','C');
+	    add('A','D');
+	    add('B','E');
+	    display();
+	
+	    
+	}
+}
+*******************************ADJACENCY LIST********************
+
+import java.util.*;
+public class Main
+{
+    static int V=3;
+    static ArrayList<ArrayList<Integer>> graph=new ArrayList<>();
+    
+    public static void add(int i,int j){
+       graph.get(i).add(j);
+       graph.get(j).add(i);
+    }
+	public static void display()
+	{
+	    for(int i=0;i<V;i++){
+	        System.out.print(i+": ");
+	    for(int v:graph.get(i))
+	    System.out.print(v+" ");
+	        System.out.println();
+	        
+	    }
+	}
+	public static void main(String[] args) {
+	    
+	    for(int i=0;i<V;i++)
+	    graph.add(new ArrayList<>());
+	    
+	    add(0,1);
+	    add(0,2);
+	    add(1,2);
+	    
+	    display();
+	
+	    
+	}
+}
+
+*********************Degree of Nodes
+
+public static void degree(){
+	    for(int i=0;i<V;i++){
+	        System.out.println(i+"->"+graph.get(i).size());
+	    }
+	}
+
+
+
+public static void degree()
+	{
+	    
+	    for(int i=0;i<V;i++){
+	        int de=0;
+	        for(int j=0;j<V;j++){
+	            if(arr[i][j]==1)
+	            de++;
+	        }
+	        System.out.println("Degree of"+i+" is"+ de);
+	    }
+	    
+	}
+****************Directed 
+//Matrix
+public static void degree()
+	{
+	    
+	    for(int i=0;i<V;i++){
+	        int inde=0,outde=0;
+	        for(int j=0;j<V;j++){
+	            if(arr[j][i]==1)
+	            inde++;
+	            if(arr[i][j]==1)
+	           outde++;
+	        
+	        }
+	        System.out.println("InD of "+i+" is "+ inde +" OutD "+outde);
+	    }
+	    
+	}
+
+//Adjacency List
+public static void degree() {
+    for (int i = 0; i < V; i++) {
+        int outde = graph.get(i).size(); 
+        int inde = 0;
+        for (int j = 0; j < V; j++) {
+            if (graph.get(j).contains(i)) {
+                inde++; 
+                }
+        }
+
+        System.out.println("InD of " + i + " is " + inde + " OutD " + outde);
+    }
+}
+
+
+***************************BFS & DFS
+
+
+
+import java.util.*;
+public class Main
+{
+    static int V=7;
+static int arr[]={1,2,3,4,5,6,7};
+    static ArrayList<ArrayList<Integer>> graph=new ArrayList<>();
+    public static int getindex(int v)
+    {
+        for(int i=0;i<arr.length;i++)
+        {
+            if(v==arr[i])
+            return i;
+        }
+        return -1;
+    }
+    public static void add(int i,int j){
+        int ind=getindex(i);
+        int in=getindex(j);
+       graph.get(ind).add(in);
+       graph.get(in).add(ind);
+     
+    }
+	public static void display()
+	{
+	    for(int i=0;i<arr.length;i++){
+	        System.out.print(arr[i]+": ");
+	        
+	    for(int v:graph.get(i))
+	    System.out.print(arr[v]+" ");
+	        System.out.println();
+	        
+	    }
+	}
+	public static void  bfs(int start){
+	    boolean seen[]=new boolean[graph.size()];
+	    Queue<Integer> q=new LinkedList<>();
+	   
+	    q.add(start);
+	    seen[start]=true;
+	    while(!q.isEmpty()){
+	        int v=q.remove();
+	        System.out.print(arr[v]+" ");
+	        for(int a:graph.get(v)){
+	            if(!seen[a]){
+	                q.add(a);
+	                seen[a]=true;
+	                //break;
+	            }
+	        }
+	    }
+	}
+ static boolean seen[]=new boolean[arr.length];
+    public static void dfs(int va){
+        seen[va]=true;
+    System.out.print(arr[va]+" ");
+    for(int a:graph.get(va)){
+        if(!seen[a])
+        dfs(a);
+    }
+    }
+	public static void main(String[] args) {
+	    
+	    for(int i=0;i<arr.length;i++)
+	    graph.add(new ArrayList<>());
+	    
+	    add(1,2);
+	    add(1,4);
+	    add(1,5);
+	    add(2,3);
+	    add(2,6);
+	    add(2,7);
+	   
+	    display();
+	    System.out.println("BFS Order");
+	    bfs(getindex(1));
+ System.out.println("DFS Order");
+	    dfs(getindex(1));
+
+	    
+	}
+}
