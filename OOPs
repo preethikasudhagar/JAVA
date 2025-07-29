@@ -1,0 +1,1023 @@
+What is OOPS in Java?
+OOPs (Object-Oriented Programming System) is a programming model that organizes software design around objects, which are instances of classes.
+
+Java is a pure object-oriented language (except for primitive types)
+
+
+
+A class is a user-defined data type that acts as a blueprint for creating objects.
+
+Syntax:
+class ClassName {
+    // Fields (Variables)
+    dataType variableName;
+
+    // Methods (Functions)
+    returnType methodName() {
+        // method body
+    }
+}
+
+
+Object
+An object is a runtime instance of a class.
+When you create an object, memory is allocated and class members can be accessed
+
+How to Instantiate an Object
+Use the new keyword to create (instantiate) an object.
+
+ClassName objectName = new ClassName();
+
+***********************Class with Single object
+class Student{
+    String name;
+    char gender;
+    int age;
+    void display()
+    {
+        System.out.println(name+" "+gender+" "+age);
+    }
+}
+class Main{
+    
+    public static void main(String args[])
+    {
+        Student S1=new Student();
+        S1.name="BIT";
+        S1.gender='F';
+        S1.age=20;
+        S1.display();
+}
+}
+******************Class with multiple objects
+
+
+
+class Student{
+    String name;
+    char gender;
+    int age;
+    void display()
+    {
+        System.out.println(name+" "+gender+" "+age);
+    }
+}
+
+
+class Main{
+    
+    public static void main(String args[])
+    {
+        Student S1=new Student();
+        S1.name="BIT";
+        S1.gender='F';
+        S1.age=20;
+        S1.display();
+Student S2=new Student();
+        S2.name="BIT2";
+        S2.gender='M';
+        S2.age=21;
+        S2.display();
+        
+    }
+}
+
+******************Class without methods
+
+
+
+
+**************Class with mulitple objects Using Array
+
+import java.util.*;
+class Student{
+    String name;
+    char gender;
+    int age;
+    
+}
+class Main{
+    
+    public static void main(String args[])
+    {
+        Scanner scan = new Scanner(System.in);
+        Student S[]=new Student[2];
+        for(int i =0;i<2;i++){
+        S[i]=new Student();
+        S[i].name=scan.nextLine();
+        S[i].gender=scan.next().charAt(0);
+        S[i].age=scan.nextInt();
+        scan.nextLine();
+        //System.out.println(S[i].name+" "+S[i].gender+" "+S[i].age);
+        }
+        //Here i have printed the object in the 0th index
+        System.out.print("Object in 0th index: ");
+        System.out.print(S[0].name+" "+S[0].gender+" "+S[0].age);
+    
+    }
+}
+
+
+**************Class with mulitple objects Using ArrayList
+
+import java.util.*;
+
+class Student {
+    String name;
+    char gender;
+    int age;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        ArrayList<Student> studentList = new ArrayList<>();
+
+        System.out.print("Enter number of students: ");
+        int size = Integer.parseInt(scan.nextLine());
+
+        for (int i = 0; i < size; i++) {
+            Student s = new Student();
+
+            s.name = scan.nextLine();           // Read name
+            s.gender = scan.next().charAt(0);   // Read gender
+            s.age = scan.nextInt();             // Read age
+            scan.nextLine();                    // Clear buffer
+
+            studentList.add(s);
+        }
+
+        for (int i = 0; i < studentList.size(); i++) {
+            Student s = studentList.get(i);
+            System.out.println(s.name + " " + s.gender + " " + s.age);
+        }
+    }
+}
+
+
+METHODS
+
+A method is a block of code that performs a specific task.
+It helps in code reusability and modular programming.
+Syntax:
+returnType methodName(parameter1, parameter2, ...) {
+    // method body
+}
+
+
+1. Predefined (Built-in) Methods
+These are methods already provided by Java libraries.
+System.out.println("Hello");   
+Math.sqrt(16);              
+
+2. User-defined Methods
+These are custom methods created by the programmer.
+
+
+What are Parameters
+
+Parameters are placeholders/variables listed in a method definition.
+They define what type of data the method accepts.
+Example:
+void greet(String name) {   // 'name' is a parameter
+    System.out.println("Hello " + name);
+}
+
+
+
+What are Arguments
+Arguments are actual values passed to the method when it is called.
+Example:
+greet("Sweety");  // "Sweety" is an argument
+
+
+TYPES:
+Without parameters
+With parameters
+With return type
+Without return type (void)
+import java.util.*;
+public class Main
+{
+	//WITHOUT PARAMETER WITHOUT return
+	
+// 	 void add(){
+// 	    int n=10,m=20;
+// 	    System.out.print(n+m);
+// 	}
+	
+	//WITHOUT PARAMETER WITH return
+	
+// 	 int add(){
+// 	    int n=10,m=20;
+// 	    System.out.print("*");
+// 	    return n+m;
+// 	}
+
+
+	//WITH PARAMETER WITHOUT return
+	
+// 	 void add(int n,int m){
+// 	   	    System.out.print(n+m);
+// 	}
+	
+	//WITH PARAMETER WITH return
+	
+	 int add(int z,int x){
+	    return (z+x);
+	}
+	
+	public static void main(String[] args) {
+	  Main ob=new Main();
+	  System.out.print( ob.add(10,20));
+	}
+}
+
+*********************************************************************
+class A{
+int a=40;	/ / non s t a t i c
+
+public static void main(String args[]){ System.out.println(a);
+}
+}
+
+*********************************************************************
+class A{
+static {
+System.out.println("static block is invoked");
+}
+public static void main(String args[]){ System.out.println("Hello main");
+}
+}
+
+Constructor:
+It has the same name as the class and does not have a return type. A constructor is called automatically when an object of the class is created.
+
+Types of Constructors
+Default Constructor
+A constructor is called "Default Constructor" when it doesn’t have any parameter. Rule: If there is no constructor in a class, then compiler automatically creates a default constructor.
+
+c l a s s Student{
+i n t id;
+String name;
+//method to display t he value of id and name
+void display(){System.out.println(id+" "+name);}
+public s t a t i c void main(String args[]){
+/ / c r eating  objects Student s1=new Student(); Student s2=new Student();
+/ / d i splaying values of t he object
+s1.display();
+s2.display();
+}
+}
+
+No-Argument Constructor
+class Student{
+int id;
+String name;
+Student()
+{
+    System.out.print("Constructor method called");
+   }
+}
+class Main{
+public static void main(String args[]){
+Student s1=new Student();
+
+}
+}
+
+**************************************************
+Parameterized Constructor
+class Student{
+int id;
+String name;
+Student(String n)
+{
+    System.out.print("Constructor method called "+n);
+    }
+}
+class Main{
+public static void main(String args[]){
+Student s1=new Student("BIT");
+
+}
+}
+******************************************************
+copy constructor
+
+
+class ADD {
+    ADD() //No args constructor
+    {
+    System.out.println(30);
+    }
+    ADD(int a) //Parametrise constructor
+    {
+        System.out.println(a+30);
+    }
+    ADD(ADD obj)//Copy contructor
+    {
+        System.out.println("Copy contructor called");
+    }
+    
+}
+public class Main {
+    public static void main(String[] args) {
+       
+        ADD ob=new ADD(10);
+        ADD ob1=new ADD();
+        ADD ob2=new ADD(ob1);
+        
+    }
+}
+
+*********this Keyword**********
+class exam
+{
+   private int x;
+   public void set(int x)
+   {
+     this.x=x;
+   }
+   public void get()
+   {
+       System.out.println(x);
+   }
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+	    int a=10;
+	    	   exam ob1=new exam();
+	    	   ob1.set(a);
+	    	   ob1.get();
+	    
+		
+	}
+}
+this to invoke current class method******************************
+class A{
+void m(){	System.out.println("hello m");	}
+void n(){
+System.out.println("hello n");
+this.m();
+}
+}
+class Main{
+public static void main(String args[]){ A a=new A();
+a.n();
+}
+}
+
+this to invoke class Default constructor******************************
+
+class A{
+A(){  System.out.println("hello a"); } A( int  x){
+this (); 
+System.out.println(x);
+}
+}
+class Main {
+public static void main(String args[]){
+A a=new A(10);
+}
+}
+this to invoke class Parameterised constructor******************************
+
+class A{
+A(){
+this ( 5); System.out.println("hello a");
+}
+A( int x){  System.out.println(x);  }
+}
+class Main {
+public static void main(String args[]){
+A a=new A();
+}
+}
+********************REAL USAGE OF THIS
+
+class Student{
+int rollno;  String name,course;
+float fee;
+Student(int rollno,String name,String course){
+this .rollno=rollno;	this .name=name;
+this.course=course;
+}
+Student(int rollno,String name,String course,float fee){ this(rollno,name,course);	
+this.fee=fee;
+}
+void display(){
+System.out.println(rollno+" "+name+" "+course+" "+fee);
+}
+}
+class Main {
+public s t a t i c void main(String args[]){
+Student s1=new Student(111,"ankit","java"); Student s2=new Student(112,"sumit","java",6000f); s1.display(); s2.display();
+}
+
+
+******Encapsulation: The idea that some components of an object should be restricted from direct access
+Binding data (variables) and code (methods) together in one unit (class).*******
+
+Protect data from unauthorized access
+
+Improve modularity
+
+Allow controlled access through getters/setters
+
+
+
+Example:
+
+class BankAccount {
+    private double balance;
+    public void initial(double b){
+        balance=b;
+        
+    }
+    public void dis()
+    {
+        System.out.println(balance);
+    }
+}
+class Main{
+    public static void main(String args[]){
+        BankAccount ob=new BankAccount();
+        ob.initial(2012.30);
+        ob.dis();
+    }
+}
+
+
+Inheritance
+Inheritance is one of the key concepts in Object-Oriented Programming (OOP). It allows a child class (subclass) to acquire the properties and behaviors (fields and methods) of a parent class (superclass). This promotes code reusability and hierarchical relationships between classes.
+
+Single Inheritance → One class inherits another.
+GrandFather
+Father
+
+    class GF{
+        void silver()
+        {
+            System.out.println("SILVER");
+        }
+    }
+    class F extends GF{
+        void gold()
+        {
+            System.out.print("GOLD");
+        }
+    }
+    public class Main {
+        public static void main(String[] args) {
+          
+            F ob1=new F();
+            ob1.silver();
+            ob1.gold();
+    
+    
+        }
+    }
+*************************************************
+Multi-level Inheritance → A class inherits another, which inherits another.
+GrandFather
+Father
+Son
+    class GF{
+        void silver()
+        {
+            System.out.println("SILVER");
+        }
+    }
+    class F extends GF{
+        void gold()
+        {
+            System.out.println("GOLD");
+        }
+    }
+    class S extends F{
+        void love()
+        {
+            System.out.print("LOVE");
+        }
+    }
+    public class Main {
+        public static void main(String[] args) {
+          
+            S ob1=new S();
+            ob1.silver();
+            ob1.gold();
+            ob1.love();
+    
+    
+        }
+    }
+*****************************************************
+
+USING CONSTRUCTOR
+
+    class GF{
+        GF()
+        {
+            System.out.println("SILVER");
+        }
+    }
+    class F extends GF{
+        F()
+        {
+            System.out.println("GOLD");
+        }
+    }
+    class S extends F{
+        S()
+        {
+            System.out.print("LOVE");
+        }
+    }
+    public class Main {
+        public static void main(String[] args) {
+          
+            S ob1=new S();
+            
+    
+        }
+    }
+
+***********************************************************
+Hierarchical Inheritance → Multiple classes inherit from one base class.
+GrandFather
+Father 
+Aunt
+
+
+Hybrid Inheritance → Combination of multiple inheritance types. (Not directly supported in Java due to ambiguity issues.)
+
+Why Java Does Not Support Multiple Inheritance?
+Java does not support multiple inheritance with classes because it causes the Diamond Problem (method ambiguity if inherited from two classes with the same method). Instead, Java supports multiple inheritance through interfaces.
+
+Polymorphism:
+Polymorphism allows objects to be treated as instances of their parent class rather than their actual class. This means a single function can process objects differently based on their class.
+Method Overloading (Compile-time Polymorphism)
+Multiple methods in the same class with the same name but different parameters.
+ Method Overriding (Run-time Polymorphism)
+A subclass provides a specific implementation of a method already defined in its superclass
+class MATH{
+    public void fun1(int a,int b){
+        System.out.println(a+b);
+        
+    }
+   
+}
+class M extends MATH{
+    @Override
+    public void fun1(int a,int b){
+        System.out.println(a*b);
+        
+    }
+}
+class Main{
+    public static void main(String[] args){ 
+    MATH ob=new MATH();
+    ob.fun1(8,3);
+    }
+}
+
+*************************************************************************
+Can we overload java main() method?
+Answer : Yes
+
+class Main{
+public static void main(String[] args){ System.out.println("main with String[]");
+}
+public static void main(String args){ System.out.println("main with String");
+}
+public static void main(){
+System.out.println("main without args");
+}
+}
+
+Abstraction
+Hiding internal details and showing only the functionality.
+
+abstract class Student {
+    abstract void writeExam(); // Abstract method
+}
+
+class John extends Student {
+    void writeExam() {
+        System.out.println("John writes the exam in pen.");
+    }
+}
+
+class Mary extends Student {
+    void writeExam() {
+        System.out.println("Mary writes the exam using a laptop.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new John();
+        Student s2 = new Mary();
+
+        s1.writeExam();  // John’s version
+        s2.writeExam();  // Mary’s version
+    }
+}
+
+
+
+Interface
+
+Another way to achieve abstraction in Java, is with interfaces.
+An interface is a completely "abstract class" that is used to group related
+methods with empty bodies
+An interface is a reference type. It is similar to class.
+It is a collection of abstract methods.
+interface vehicle
+{
+    void start();
+}
+class car implements vehicle{
+    public void start()
+    {
+System.out.println("Car started");
+    }
+}
+class bike implements vehicle{
+    public void start()
+    {
+System.out.println("Bike started");
+    }
+}
+public class inte {
+public static void main(String[] args) {     
+vehicle ob=new car();
+ob.start();
+vehicle ob1=new bike();
+ob1.start();
+}
+}
+*******************************************************************
+1. Definition:
+Abstract Class: A class that can have both implemented and abstract (unimplemented) methods.
+Interface: A blueprint that contains only abstract methods (before Java 8) or default/static methods (from Java 8).
+2. Usage:
+Abstract Class: Used when multiple related classes share common behavior.
+Interface: Used when multiple classes (even unrelated) must follow a common contract.
+3. Methods:
+Abstract Class: Can have both implemented and abstract methods.
+Interface: Before Java 8, only abstract methods; from Java 8, can have default and static methods.
+4. Variables:
+Abstract Class: Can have instance variables (normal and static).
+Interface: Only public, static, and final variables (constants).
+5. Inheritance:
+Abstract Class: Supports single inheritance (A class can extend only one abstract class).
+Interface: Supports multiple inheritance (A class can implement multiple interfaces).
+6. Constructor:
+Abstract Class: Can have constructors.
+Interface: Cannot have constructors (cannot be instantiated).
+7. Access Modifiers:
+Abstract Class: Can have any access modifier (public, private, protected, default).
+Interface: Methods are public and abstract by default.
+8. When to Use?
+Abstract Class → When classes are related and share some behavior.
+Interface → When classes are unrelated but need a common ability.
+
+***************************************************************************************************
+
+
+
+1.Write a Java program to create a class called "Person" with a name and age attribute. Create Private instance of the "Person" class, set their attributes using the constructor, and print their name and age.
+
+import java.util.Scanner;
+class Person {
+    private String name;
+    private int age;
+    Person(String n,int a){
+        name=n;
+        age=a;
+    }
+    void display()
+    {
+        System.out.print(name +" "+age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner kbd = new Scanner(System.in);
+        String s=kbd.next();
+        int b=kbd.nextInt();
+        Person p1=new Person(s,b);
+        p1.display();
+
+
+    }
+}
+
+
+
+2.Create a class Rectangle with attributes length and width. Write a method to calculate and return the area of the rectangle. Instantiate an object of the Rectangle class, set the values of length and width, and display the area.
+
+import java.util.Scanner;
+class Person {
+    private int l;
+    private int b;
+    Person(int n,int a){
+        l=n;
+        b=a;
+    }
+    void display()
+    {
+        System.out.print(l*b);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner kbd = new Scanner(System.in);
+        int s=kbd.nextInt();
+        int b=kbd.nextInt();
+        Person p1=new Person(s,b);
+        p1.display();
+
+
+    }
+}
+
+3.Create a class 'Parent'. 'Parent' class should have a method 'add' which prints the addition of 2 integers. Create a class 'Child1' which should be a child class of 'Parent' class. 'Child' class should have a method 'sub' which prints subtraction of 2 integers. Create a class 'Child2' which should be a child class of 'child1' class. 'Child2' class should have a method 'mul' which prints multiplication of 2 integers. Create an object for a 'Child2' class. Call the 3 methods to add, sub and mul from child class object and display the result.
+
+
+    class Parent{
+        Parent(int a,int b)
+        {
+            System.out.println("ADD"+(a+b));
+        }
+    }
+    class Child1 extends Parent{
+        Child1(int a,int b)
+        {
+            super(a,b);
+            System.out.println("SUB"+(a-b));
+        }
+    }
+    class Child2 extends Child1{
+        Child2(int a,int b)
+        {
+            super(a,b);
+            System.out.println("MUL"+(a*b));
+        }
+    }
+    public class Main {
+        public static void main(String[] args) {
+          
+            Child2 ob=new Child2(10,5);
+            
+    
+        }
+    }
+4.Create a class 'Parent'. 'Parent' class should have a method 'add' which prints the addition of 2 integers. Create a class 'child1' which should be a 'child' class of 'parent' class.it has a method 'sub' which prints subtraction of 2 integers. Create a class 'child2' which should be a child class of 'Parent' class. 'Child2' class should have a method 'mul' which prints multiplication of 2 integers.
+
+Create a class 'child3' which should be a child class of 'child1' class and 'child2' class. 'Child3' class should have a method 'div' which prints the division of 2 integers. Create an object for a 'Child3' class. Call the 4 methods to add, sub, mul, and div from the child1 class object and display the result.
+
+
+interface Parent{
+    default void add(int a,int b){
+        System.out.println(a+b);
+        
+    }
+}
+class child1 implements Parent{
+    
+    public void sub(int a,int b){
+        System.out.println(a-b);
+    }
+}
+interface child2 extends Parent{
+    void mul(int a,int b);
+}
+class child3 extends child1 implements child2{
+    public void mul(int a,int b){
+        System.out.println(a*b);
+    }
+    public void div(int a,int b){
+        System.out.println(a/b);
+    }
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+		child3 ob=new child3();
+		ob.add(4,2);
+		ob.sub(4,2);
+		ob.mul(4,2);
+		ob.div(4,2);
+	}
+}
+
+
+
+5.Write a program to implement function overloading.
+
+Ram is given two or three inputs as an integer, if he has two integers then add the two numbers. If he has three inputs, then multiply the three numbers.
+
+Function Header:
+
+public void fun1(int a,int b,int c)
+
+public void fun1(int a,int b)
+
+class MATH{
+    public void fun1(int a,int b){
+        System.out.println(a+b);
+        
+    }
+    public void fun1(int a,int b,int c)
+    {
+        System.out.println(a*b*c);
+    }
+}
+class Main{
+    public static void main(String[] args){ 
+    MATH ob=new MATH();
+    ob.fun1(2,3);
+    ob.fun1(4,5);
+    ob.fun1(5,2,3);
+}
+}
+
+6.Write a program defining 3 functions with the same name "calc" which performs the mathematical operations of Square, Modulus, and Division.
+Function for Square takes in one integer argument and returns an integer value
+Function for Modulus takes 2 integer arguments and returns an integer value
+Function for Division takes 2 floating-point arguments and returns and float value
+
+import java.util.Scanner;
+
+public class Calculator {
+
+    int calc(int num) {
+        return num * num;
+    }
+
+    int calc(int a, int b) {
+        return a % b;
+    }
+
+    float calc(float x, float y) {
+        return x / y;
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        Calculator obj = new Calculator();
+
+        int num = scan.nextInt();
+        int a = scan.nextInt();
+        int b = scan.nextInt();
+        float x = scan.nextFloat();
+        float y = scan.nextFloat();
+
+        System.out.println("Square: " + obj.calc(num));
+        System.out.println("Modulus: " + obj.calc(a, b));
+        System.out.println("Division: " + obj.calc(x, y));
+    }
+}
+
+7.You are tasked with developing a program to calculate the salaries of employees, both full-time and part-time. The program should prompt the user to select the type of employee (Full-Time or Part-Time) and then gather the necessary input to calculate the salary for the chosen employee type.
+Here are the specific requirements for the program:
+Implement a base class called "Employee" with a  function calculateSalary().
+Create two derived classes, "FullTimeEmployee" and "PartTimeEmployee," each with their own calculateSalary() functions.
+For a "FullTimeEmployee," the program should calculate the total salary by adding the base salary and the bonus.
+For a "PartTimeEmployee," the program should:calculate the total salary by multiplying the hourly rate by the hours worked.
+In the main() function, the program should, based on the user's choice, create an object of the appropriate employee type.
+Call the calculateSalary() function on the created object to calculate and display the total salary.
+
+import java.util.Scanner;
+
+class Emp {
+    void calc() {
+        System.out.println("Calculating salary...");
+    }
+}
+
+class FTE extends Emp {
+    void calc(double base, double bonus) {
+        System.out.println("Total Salary: ₹" + (base + bonus));
+    }
+}
+
+class PTE extends Emp {
+    void calc(double rate, int hrs) {
+        System.out.println("Total Salary: ₹" + (rate * hrs));
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+
+        if (t == 1) {
+            double b = sc.nextDouble();
+            double bn = sc.nextDouble();
+            FTE f = new FTE();
+            f.calc();
+            f.calc(b, bn);
+        } else {
+            double r = sc.nextDouble();
+            int h = sc.nextInt();
+            PTE p = new PTE();
+            p.calc();
+            p.calc(r, h);
+        }
+    }
+}
+
+8.Write a program to welcome a person using the default constructor.
+Create a class Welcome with a default constructor which prints "Welcome ".
+Create a class Hello with a default constructor which prints "Hello ".
+In the main method prompt the user to enter the name of the person and create objects for classes Welcome and Hello.
+
+import java.util.Scanner;
+
+class Welcome {
+    Welcome() {
+        System.out.println("Welcome ");
+    }
+}
+
+class Hello {
+    Hello() {
+        System.out.println("Hello ");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String name = scan.nextLine();
+
+        Welcome w = new Welcome();
+        Hello h = new Hello();
+
+        System.out.println(name + "!");
+    }
+}
+
+9.Write a program to find the area of the wall. Create a class Wall with the following private attributes
+length - double
+height - double
+Include parameterized constructor Wall(double length, double height) and a method calculateArea() which returns the area of the wall. In the main method get the length and breadth of two walls from the user.
+import java.util.Scanner;
+
+class Wall {
+    private double length;
+    private double height;
+
+    Wall(double length, double height) {
+        this.length = length;
+        this.height = height;
+    }
+
+    double getArea() {
+        return length * height;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        double l = scan.nextDouble();
+        double h = scan.nextDouble();
+
+        Wall w = new Wall(l, h);
+        System.out.println("Area of the Wall: " + w.getArea());
+    }
+}
+
+
+
+
+Real time Implementation:
+*********************** Abstract***************
+Create an abstract class Payment with two abstract methods: authenticateUser() and processPayment().
+Implement two subclasses: UpiPayment and CardPayment that provide specific implementations for these methods.
+In the main method, take user input to choose the payment method and call the appropriate methods.
+
+**************************Interface****************
+Design a system where different types of documents like PDF, Word, and Image can be printed.
+Create an interface Printable with a method print().
+
+Implement the interface in:
+
+PDFDocument → prints “Printing PDF Document”
+
+WordDocument → prints “Printing Word Document”
+
+ImageFile → prints “Printing Image File”
+
+In main(), based on user input (1, 2, or 3), create the right object and call print().
