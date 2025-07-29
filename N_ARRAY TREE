@@ -1,0 +1,79 @@
+import java.util.*;
+class Node{
+        int data;
+        List<Node> child; 
+        Node(int d){
+            data=d;
+            child=new ArrayList<>();
+        }
+    }
+class NAry{
+    Node root=null;
+    NAry(int va){
+        root=new Node(va);
+    }
+    public void insert(Node n,int v){
+        Node new_node=new Node(v);
+        n.child.add(new_node);
+    }
+    public void preOrder(Node a){
+        if(a==null) return;
+        System.out.print(a.data+" ");
+        for(Node x:a.child)
+        preOrder(x);
+    }
+ public void postOrder(Node a){
+        if(a==null) return;
+        for(Node x:a.child)
+        postOrder(x);
+        System.out.print(a.data+" ");
+        
+    }
+public int countNodes(Node node) {
+        if (node == null) return 0;
+        int count = 1;
+        for (Node child : node.child)
+            count += countNodes(child);
+        return count;
+    }
+public int height(Node n){
+        if(n==null) return 0;
+        int maxh=0;
+        for(Node A:n.child){
+            int h=height(A);
+            if(h>maxh)
+            maxh=h;
+        }
+        return maxh+1;
+    }
+public void levelOrder(Node n){
+        if(n==null) return;
+        Queue<Node> q=new LinkedList<>();
+        q.add(n);
+        
+        while(!q.isEmpty()){
+        Node temp=q.remove();
+        System.out.print(temp.data+" ");
+        for(Node A:temp.child)
+        q.add(A);
+    }
+    }}
+public class Main{
+	public static void main(String[] args) {
+	    NAry tree=new NAry(1);
+	    Node r=tree.root;
+	    tree.insert(r,2);
+	    tree.insert(r,3);
+	    tree.insert(r,4);
+	    tree.insert(r,5);
+	    tree.insert(r.child.get(1),6);
+	    tree.insert(r.child.get(1),7);
+	    tree.insert(r.child.get(1).child.get(0),8);
+	    tree.insert(r.child.get(1).child.get(0),9);
+	    System.out.println("Preorder ");
+	    tree.preOrder(r);
+	    System.out.println("\nPostorder ");
+	    tree.postOrder(r);
+	
+}
+}
