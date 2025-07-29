@@ -1,0 +1,137 @@
+Name Printing
+***************************************************
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        String name = in.nextLine();
+        for(int i=0;i<name.length();i++){
+            for(int j=0;j<=i;j++){
+                System.out.print(name.charAt(j));
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+Pendulum Arrangement
+
+*********************************
+
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        int[] arr = new int[]{5,7,1,2,3};
+        PriorityQueue<Integer> q = new PriorityQueue(Collections.reverseOrder());
+        for(int n : arr){
+            q.offer(n);
+        }
+        
+        int l = 0 , r = arr.length - 1;
+        boolean cond = true;
+        int[] res = new int[arr.length];
+        while(!q.isEmpty()){
+            if(cond) {
+                res[l++] = q.poll();
+            }
+            else{
+                res[r--] = q.poll();
+            }
+            cond = !cond;
+        }
+        System.out.print(Arrays.toString(res));
+    }
+}
+
+
+n & n-1 th Prime sum
+**********************************************************
+
+public class Main {
+    public static void main(String[] args) {
+        int n = 10;
+        int count = 0;
+        int num = 2;
+        int pprime = 0;
+        int prime = 0;
+
+        while (count < n) {
+            if (isPrime(num)) {
+                count++;
+                pprime = prime;
+                prime = num;
+            }
+            num++;
+        }
+
+        
+        System.out.println(pprime+prime);
+    }
+
+    static boolean isPrime(int num) {
+        if (num <= 1) return false;
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
+}
+
+
+Pattern
+*****************************************
+
+5 4 3 2 *
+5 4 3 * 1
+5 4 * 2 1
+5 * 3 2 1
+* 4 3 2 1
+
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+        
+        for(int i=0;i<n;i++){
+            for(int j=n;j>0;j--){
+                if(i==j-1){
+                    System.out.print("*");
+                }
+                else{
+                    System.out.print(j);
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+NextGreaterElements in ARRAy
+
+************************************************************
+import java.util.*;
+public class Main{
+    public static int[] NGE(int a[]){
+        int ans[]=new int[a.length];
+        for(int i=0;i<a.length;i++){
+             ans[i]=-1;
+            for(int j=i+1;j<a.length;j++){
+                if(a[i]<a[j]){
+                ans[i]=a[j];
+                break;
+                }
+                }
+        }
+        return ans;
+    }
+    public static void main(String[] args){
+            int arr[]=new int[]{2,4,6,3,5};
+            int res[]=NGE(arr);
+            System.out.println(Arrays.toString(res));
+        }
+    
+}
+
