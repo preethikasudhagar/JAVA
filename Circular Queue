@@ -1,0 +1,75 @@
+class CircularQueueusingArray {
+    int[] queue;
+    int size;
+    int rear, front;
+
+    CircularQueueusingArray(int size) {
+        this.size = size;
+        queue = new int[size];
+        rear = -1;
+        front = -1;
+    }
+
+    public void enqueue(int val) {
+        if ((rear + 1) % size == front) {
+            System.out.println("Queue Overflow");
+            return;
+        }
+
+        if (rear == -1) 
+            front = rear = 0;
+        else 
+            rear = (rear + 1) % size;
+        
+        queue[rear] = val;
+    }
+
+    public void dequeue() {
+        if (front == -1) {
+            System.out.println("Queue Underflow");
+            return;
+        }
+
+        System.out.println("Dequeued element: " + queue[front]);
+
+        if (front == rear) {
+            front = rear = -1;
+            System.out.println("One element in queue deleted, now empty.");
+        } else 
+            front = (front + 1) % size;
+        
+    }
+
+    public void display() {
+        if (front == -1) {
+            System.out.println("Queue Empty");
+            return;
+        }
+
+        int i = front;
+        do {
+            System.out.print(queue[i] + " ");
+            i = (i + 1) % size;
+        } while (i != (rear + 1) % size);
+        System.out.println(); 
+}
+}
+public class Main
+{
+	public static void main(String[] args) {
+		CircularQueueusingArray q1=new CircularQueueusingArray(5);
+		q1.enqueue(10);
+// 		q1.enqueue(20);
+// 		q1.enqueue(30);
+// 		q1.enqueue(40);
+		q1.display();
+		q1.dequeue();
+	//	q1.display();
+	//	q1.display();
+	q1.dequeue();
+	//	q1.display();
+	}
+}
+
+
+
