@@ -1,0 +1,108 @@
+
+class DoubleendedQueueusingArray {
+    int front, rear, size;
+    int[] arr;
+
+    public DoubleendedQueueusingArray(int size) {
+        this.size = size;
+        arr = new int[size];
+        front = -1;
+        rear = -1; 
+    }
+
+    boolean isFull() {
+        return (front == (rear + 1) % size);
+    }
+
+    boolean isEmpty() {
+        return (front == -1);
+    }
+
+    void enqueueAtFront(int val) {
+        if (isFull()) {
+            System.out.println("Overflow at front");
+            return;
+        }
+
+        if (isEmpty()) 
+            front = rear = 0;
+         else 
+            front = (front - 1 + size) % size; 
+        
+
+        arr[front] = val;
+    }
+
+    void enqueueAtRear(int val) {
+        if (isFull()) {
+            System.out.println("Overflow at rear");
+            return;
+        }
+
+        if (isEmpty()) 
+            front = rear = 0;
+         else 
+            rear = (rear + 1) % size; 
+        
+
+        arr[rear] = val;
+    }
+
+    void deleteFront() {
+        if (isEmpty()) {
+            System.out.println("Underflow at front");
+            return;
+        }
+
+        if (front == rear) 
+            front = rear = -1;
+         else 
+            front = (front + 1) % size;
+        
+    }
+
+    void deleteRear() {
+        if (isEmpty()) {
+            System.out.println("Underflow at rear");
+            return;
+        }
+
+        if (front == rear) 
+            front = rear = -1;
+         else 
+            rear = (rear - 1 + size) % size;
+        
+    }
+
+    void display() {
+        if (isEmpty()) {
+            System.out.println("Deque is Empty");
+            return;
+        }
+
+        System.out.print("Deque: ");
+        int i = front;
+        while (true) {
+            System.out.print(arr[i] + " ");
+            if (i == rear) break;
+            i = (i + 1) % size;
+        }
+        System.out.println();
+    }
+}
+       
+
+public class Main
+{
+	public static void main(String[] args) {
+		DoubleendedQueueusingArray q1=new DoubleendedQueueusingArray(5);
+		q1.enqueueAtRear(10);
+		q1.enqueueAtRear(20);
+		q1.enqueueAtFront(1);
+		q1.enqueueAtFront(5);
+		q1.enqueueAtFront(2);
+		
+		q1.display();
+	
+	}
+}
