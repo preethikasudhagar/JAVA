@@ -1,0 +1,65 @@
+A generic class in Java lets you write code that can work with any data type, using a type parameter like <T>.
+
+You write the class only once, and it works for any type (Integer, String, Float, etc.).
+
+Example:
+Box<Integer> intBox = new Box<>();
+Box<String> strBox = new Box<>();
+
+class Container<T> {
+    private T value;
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public T getValue() {
+        return value;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Container<String> nameBox = new Container<>();
+        nameBox.setValue("Sweety");
+
+        Container<Integer> marksBox = new Container<>();
+        marksBox.setValue(88);
+
+        Container<Double> priceBox = new Container<>();
+        priceBox.setValue(150.5);
+
+        System.out.println("Name  : " + nameBox.getValue());
+        System.out.println("Marks : " + marksBox.getValue());
+        System.out.println("Price : ₹" + priceBox.getValue());
+    }
+}
+**********************
+Generic with pairs
+
+class BIT<T,S>{
+    private T val;
+    private S v;
+    public void set(T val,S v){
+        this.val=val;
+        this.v=v;
+    }
+    public void get(){
+        System.out.println(val+" "+v);
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+		BIT<String,Integer> ob=new BIT<>();
+		ob.set("Selvi",100);
+	    ob.get();
+		
+		BIT<Integer,Character> ob1=new BIT<>();
+		ob1.set(100,'P');
+		ob1.get();
+	}
+}
+************************************
+
+Array with Generic
